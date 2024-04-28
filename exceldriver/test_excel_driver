@@ -1,9 +1,7 @@
 from excel_driver import Excel_Driver
-from pathlib import Path
-path = Path(r"C:\Users\mhtso\OneDrive\Desktop1\SpreadTEX\app\SpreadTEX\static\data.xlsx")
-file = Excel_Driver(path)
-file.getdata() 
-
-for row in file.data:
-    print(row)
-print(file)
+from pathlib import Path, PureWindowsPath
+path = Path(__file__).parent.parent / "static"
+file = "data.xlsx"
+driver = Excel_Driver(path / file)
+driver.get_data()
+print(driver.data[0])

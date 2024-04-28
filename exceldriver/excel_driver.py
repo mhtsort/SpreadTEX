@@ -11,7 +11,7 @@ class Excel_Driver():
         return str(self.data)
     def __repr__(self) -> str:
         return str(self.data[0])
-    def getdata(self):
+    def get_data(self):
         # Load the workbook
         workbook = load_workbook(filename=self.path)
         # Select a worksheet
@@ -22,5 +22,5 @@ class Excel_Driver():
         sheet.iter_rows()
         # Iterate through the rows and read the values
         for row in sheet.iter_rows(values_only=True):
-            print(row)
+            #print(row)
             self.data.append(row)
