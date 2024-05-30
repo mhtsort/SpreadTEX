@@ -34,8 +34,20 @@ class Excel_Driver:
         - bool: True if the file exists, False otherwise.
         """
         return path.exists() and path.is_file()
-
+    def read(self):
+        self.data = []
+        self.get_data()
+        return self.data
+    
+    def select(self, selection_strategy = None):
+        if selection_strategy is not None:
+            return selection_strategy(self.data)
+        else:
+            return self.data
 if __name__ == '__main__':
+    
+    def strategy(mylist):
+        return [x for x in mylist[1:] if x[2]>50210]
     print("START")
     static_dir = Path(__file__).resolve().parent.parent / 'static'
     path = static_dir / 'data.xlsx'
@@ -43,5 +55,7 @@ if __name__ == '__main__':
         driver = Excel_Driver(path)
     except FileExistsError as e:
         print(e)
-    driver.get_data()
-    print(driver.data)
+    driver.read()
+    driver.select()
+    
+    print(driver.select(strategy))
