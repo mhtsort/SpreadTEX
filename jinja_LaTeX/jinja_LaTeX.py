@@ -23,3 +23,11 @@ class Data_to_Template():
     def __init__(self, data:list[tuple] =[], columns_list=[]):
         self.data = data
         
+if __name__ == '__main__':
+    print("Works fine")
+    static_dir = Path(__file__).resolve().parent.parent / 'static'
+    print(static_dir)
+    template_file=static_dir / 'template.tex'
+    with open(template_file,"r") as file:
+        for line in file:
+            print(line)
