@@ -5,6 +5,7 @@ from pathlib import Path
 class TeX_Template(jinja2.Template):
     '''Objects of this class contain the text of a jinja2 Template of a LaTeX document
     '''
+    '''DELETE WHEN READY
     def __init__(self, template, filename:str = "template.tex" ):
         self.template = jinja2.Template(template)
         self.filename = filename
@@ -24,7 +25,29 @@ class TeX_Template(jinja2.Template):
         text = r"This is \begin{jinja} myvar1 \end{jinja} and \begin{jinja} myvar2 \end{jinja}"
         # Create the template using the custom environment
         template_inside = env.from_string(text)
-
+    '''
+    def __init__(self,current_directory):
+        # TODO is the current_directory apropriate name?
+        self._environment = jinja2.Environment(loader = jinja2.FileSystemLoader(current_directory))
+        pass
+    def set_environment_variables(self,environment_variables_dict:dict):
+        conf = environment_variables_dict
+        for conf_variable in conf.keys():
+            match conf_variable:
+                case "VARIABLE_START_STRING":
+                    self._environment.variable_start_string = conf[conf_variable]
+                case "VARIABLE_END_STRING" :
+                    self._environment.variable_end_string = conf[conf_variable]
+                case "BLOCK_START_STRING" :
+                    self._environment.block_start_string = conf[conf_variable]
+                case "BLOCK_END_STRING" :
+                    self._environment.block_end_string = conf[conf_variable]
+                case "COMMENT_START_STRING":
+                    self._environment.comment_start_string =conf[conf_variable]
+                case "COMMENT_END_STRING":
+                    self._environment.comment_end_string = conf[conf_variable]
+                case _:
+                    print(f"Configuration variable {_} not recognized")
     def __str__(self):
         return self.filename
 
@@ -51,4 +74,4 @@ if __name__ == '__main__':
             print(line)
     # Test if data goes into template
     var1 = "Jinja Works!"
-    TeX_Template(template_file)
+    
