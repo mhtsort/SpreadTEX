@@ -12,3 +12,8 @@ authors:
     family-names: Tsortanidis
     email: mhtsort@gmail.com
     affiliation: Independent
+identifiers:
+  - type: url
+    value: 'https://github.com/mhtsort/SpreadTEX'
+    description: SpreadTeX repository
+repository-code: 'https://github.com/mhtsort/SpreadTEX'
