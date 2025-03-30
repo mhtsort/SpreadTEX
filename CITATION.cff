@@ -1,0 +1,14 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: SpreadTeX
+message: >-
+  If you use this software, please contact reposistory
+  administrator for research reasons.
+type: software
+authors:
+  - given-names: Dimitris
+    family-names: Tsortanidis
+    email: mhtsort@gmail.com
+    affiliation: Independent
